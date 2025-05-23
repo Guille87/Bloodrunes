@@ -5,6 +5,7 @@ public class EnemyDamage : MonoBehaviour
 {
     [SerializeField] int initialHealth;
     [SerializeField] float hitEffectDuration;
+    [SerializeField] GameObject deathVFX;
 
     Material material;
     int currentHealth;
@@ -35,6 +36,7 @@ public class EnemyDamage : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
+            Instantiate(deathVFX, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

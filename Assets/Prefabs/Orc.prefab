@@ -221,6 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHealth: 3
   hitEffectDuration: 0.1
+  deathVFX: {fileID: 8667163071389111117, guid: ba0649df51889e74ba7be55fe21c1830, type: 3}
 --- !u!114 &1213899333380450362
 MonoBehaviour:
   m_ObjectHideFlags: 0
