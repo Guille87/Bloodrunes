@@ -108,6 +108,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""4d5910a9-6f14-415d-89de-1d01a86de94c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -198,6 +207,39 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d5c11fa8-fc2f-41b2-862d-66e98fbeb941"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""565ca094-1f4c-4dda-bc34-5637453bfffb"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d3c89014-ae5f-4938-9a05-e446b84c57f5"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -208,6 +250,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
+        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -290,6 +333,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Attack;
+    private readonly InputAction m_Player_Dash;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -309,6 +353,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Attack".
         /// </summary>
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Dash".
+        /// </summary>
+        public InputAction @Dash => m_Wrapper.m_Player_Dash;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -341,6 +389,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
         }
 
         /// <summary>
@@ -358,6 +409,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
         }
 
         /// <summary>
@@ -412,5 +466,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAttack(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Dash" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDash(InputAction.CallbackContext context);
     }
 }

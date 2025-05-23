@@ -2,14 +2,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    private float lastHorizontalDirection;
+    [Header("Player Movement")]
+    [SerializeField] private float normalSpeed;
+    [SerializeField] private float dashSpeed;
+    [SerializeField] private float dashTime;
 
     Rigidbody2D rb;
     Animator anim;
     SpriteRenderer sr;
     Controls controls;
     Vector2 movement;
+    float lastHorizontalDirection;
+    float speed;
 
     public bool IsLookingRight { get; private set; } = true;
     public bool IsAttacking { get; private set; } = false;
@@ -21,6 +25,9 @@ public class PlayerController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         controls = new Controls();
         controls.Player.Attack.performed += _ => Attack();
+        controls.Player.Dash.performed += _ => Dash();
+
+        speed = normalSpeed;
     }
 
     void OnEnable()
@@ -85,5 +92,16 @@ public class PlayerController : MonoBehaviour
     {
         IsAttacking = false;
         Debug.Log("Attack ended");
+    }
+
+    void Dash()
+    {
+        speed = dashSpeed;
+        Invoke(nameof(ResetSpeed), dashTime);
+    }
+
+    void ResetSpeed()
+    {
+        speed = normalSpeed;
     }
 }
