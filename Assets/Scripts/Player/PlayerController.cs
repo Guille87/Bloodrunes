@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed;
+    private float lastHorizontalDirection;
 
     Rigidbody2D rb;
     Animator anim;
@@ -56,9 +57,15 @@ public class PlayerController : MonoBehaviour
     void SetAnimation()
     {
         anim.SetFloat("move", movement.magnitude);
+
         if (movement.magnitude > 0)
         {
-            sr.flipX = movement.x < 0;
+            if (movement.x != 0)
+            {
+                lastHorizontalDirection = movement.x;
+            }
+
+            sr.flipX = lastHorizontalDirection < 0;
             IsLookingRight = !sr.flipX;
         }
     }

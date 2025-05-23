@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 1584115237800946448}
   - component: {fileID: 5306340523577625581}
   - component: {fileID: 6445780544526419551}
+  - component: {fileID: 965402535079457142}
+  - component: {fileID: 1213899333380450362}
   m_Layer: 0
   m_Name: Orc
   m_TagString: Untagged
@@ -205,6 +207,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+--- !u!114 &965402535079457142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899002859725964991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7dd68d4e4777094d992ab014b530593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialHealth: 3
+  hitEffectDuration: 0.1
+--- !u!114 &1213899333380450362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899002859725964991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce62c99995bdcc4a880ed8f6dc8b71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pushTime: 0.25
 --- !u!1 &5423315128498273054
 GameObject:
   m_ObjectHideFlags: 0

@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 5085705077357161218}
   - component: {fileID: 8858442398311850035}
   - component: {fileID: 1419659265171112810}
+  - component: {fileID: 8108233351880525356}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -248,6 +249,20 @@ MonoBehaviour:
   rightSwordCollider: {fileID: 5085705077357161218}
   leftSwordCollider: {fileID: 8858442398311850035}
   playerController: {fileID: 7686155665514906162}
+--- !u!114 &8108233351880525356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5899610771194272870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93dee7e1cd285944db60c3c7b46dbc0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  pushForce: 5
 --- !u!1 &7433869187902505031
 GameObject:
   m_ObjectHideFlags: 0

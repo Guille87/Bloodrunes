@@ -6,6 +6,7 @@ public class EnemyPathFinding : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     Animator anim;
+    PushBack pushBack;
 
     Vector2 moveDirection;
 
@@ -14,6 +15,7 @@ public class EnemyPathFinding : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        pushBack = GetComponent<PushBack>();
     }
 
     void FixedUpdate()
@@ -28,6 +30,9 @@ public class EnemyPathFinding : MonoBehaviour
 
     void Move()
     {
+        if (pushBack.IsPushed)
+            return;
+        
         rb.MovePosition(rb.position + moveDirection * speed * Time.fixedDeltaTime);
     }
 
